@@ -31,3 +31,15 @@ export function loginWithPassword ({username, email, password}) {
     };
     return this.call("login", loginParameters).then(onLogin.bind(this));
 }
+
+export function loginWithAdminPassword({username, email, password}) {
+    const loginParameters = {
+        withAdminPassword: true,
+        adminPassword: password,
+        user: {
+            username,
+            email
+        }
+    };
+    return this.call("login", loginParameters).then(onLogin.bind(this));
+}
